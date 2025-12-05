@@ -7,4 +7,4 @@ export const URLS = {
     "https://backbone-web-api.production.leuven.delcom.nl/bookable-slots",
 };
 
-export const INTERVAL_MINS = 5; // Interval in minutes for the daemon to check for available slots
+export const INTERVAL_MINS = 0.1; // Interval in minutes for the daemon to check for available slots

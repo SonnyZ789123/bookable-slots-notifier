@@ -30,3 +30,11 @@ WHATSAPP_USER_PHONE_NUMBER=32495****
 npm install
 npm run dev
 ```
+
+To run the standalone script with arguments, for tomorrow for the hours 12 until 14:
+
+```bash
+npm install
+npm run build
+node dist/startBookableSlotNotifier.js 12 13 14
+```
