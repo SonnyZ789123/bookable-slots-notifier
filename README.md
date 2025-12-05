@@ -31,10 +31,13 @@ npm install
 npm run dev
 ```
 
-To run the standalone script with arguments, for tomorrow for the hours 12 until 14:
+To run the standalone script with arguments, run `node dist/startBookableSlotNotifier.js <tomorrow|today> <...hours>`.
+ 
+For example, for tomorrow for the hours 12 until 14:
 
 ```bash
 npm install
 npm run build
-node dist/startBookableSlotNotifier.js 12 13 14
+node dist/startBookableSlotNotifier.js tomorrow 12 13 14
 ```
+
