@@ -1,7 +1,7 @@
-import { pipe } from "fp-ts/lib/function";
-import { Slots } from "../services/getBookableSlots";
-import { notifyWhatsAppRecipients } from "../services/whatsappNotifier";
-import { idMap } from "../types";
+import { pipe } from "fp-ts/lib/function.js";
+import { Slots } from "../services/getBookableSlots.js";
+import { notifyWhatsAppRecipients } from "../services/whatsappNotifier.js";
+import { idMap } from "../types/index.js";
 
 /*
 A slot looks something like this:

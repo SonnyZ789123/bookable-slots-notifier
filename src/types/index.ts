@@ -1,2 +1,2 @@
-export * from "./httpTypes";
-export * from "./internal";
+export * from "./httpTypes.js";
+export * from "./internal.js";

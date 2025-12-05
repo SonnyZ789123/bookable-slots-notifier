@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import { isLeft } from "fp-ts/lib/Either";
-import { pipe } from "fp-ts/lib/function";
-import { StartDaemonBody } from "../domain /apiDefinitions";
-import FieldTargetRange from "../domain /FieldTargetRange";
+import { isLeft } from "fp-ts/lib/Either.js";
+import { pipe } from "fp-ts/lib/function.js";
+import { StartDaemonBody } from "../domain/apiDefinitions.js";
+import FieldTargetRange from "../domain/FieldTargetRange.js";
 import { getBookableSlots } from "../services/getBookableSlots.js";
-import { availableFilter, indoorFilter } from "../utils/slotFilter";
+import { availableFilter, indoorFilter } from "../utils/slotFilter.js";
 
 const INTERVAL_MINS = 5;
 

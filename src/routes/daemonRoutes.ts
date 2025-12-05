@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { startDaemon, stopDaemon } from "../controllers/daemonController";
+import { startDaemon, stopDaemon } from "../controllers/daemonController.js";
 
 const router = Router();
 

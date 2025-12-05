@@ -1,11 +1,11 @@
 import axios from "axios";
-import { URLS } from "../config/constants";
+import { URLS } from "../config/constants.js";
 import {
   idMap,
   IndoorField,
   OutdoorField,
   PostParticipationsPayload,
-} from "../types";
+} from "../types/index.js";
 
 type BookFieldPayloadParams = (IndoorField | OutdoorField) & {
   memberId: number;

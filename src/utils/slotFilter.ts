@@ -1,5 +1,5 @@
-import { Slots } from "../services/getBookableSlots";
-import { idMap } from "../types";
+import { Slots } from "../services/getBookableSlots.js";
+import { idMap } from "../types/index.js";
 
 export const indoorFilter = (slots: Slots) =>
   slots.filter(

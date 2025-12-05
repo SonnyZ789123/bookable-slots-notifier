@@ -1,11 +1,11 @@
 import axios from "axios";
-import { isLeft } from "fp-ts/lib/Either";
-import { URLS } from "../config/constants";
+import { isLeft } from "fp-ts/lib/Either.js";
+import { URLS } from "../config/constants.js";
 import {
   GetBookableSlotsFilterQueryParams,
   GetBookableSlotsResponse,
   idMap,
-} from "../types";
+} from "../types/index.js";
 
 export type Slots = Awaited<ReturnType<typeof getBookableSlots>>;
 

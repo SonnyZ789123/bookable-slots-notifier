@@ -1,7 +1,7 @@
-import { pipe } from "fp-ts/lib/function";
-import FieldTargetRange from "../domain /FieldTargetRange";
-import { getBookableSlots } from "../services/getBookableSlots";
-import { availableFilter, indoorFilter } from "./slotFilter";
+import { pipe } from "fp-ts/lib/function.js";
+import FieldTargetRange from "../domain/FieldTargetRange.js";
+import { getBookableSlots } from "../services/getBookableSlots.js";
+import { availableFilter, indoorFilter } from "./slotFilter.js";
 
 type DatesToCheck = { month: number; date: number; hours: number[] };
 
