@@ -5,9 +5,10 @@ A small Node.js + TypeScript service that periodically checks bookable field slo
 ## **Scripts**
 
 ```bash
-npm run dev     # Start in development (tsx)
-npm run build   # Compile TypeScript
-npm start       # Run compiled app (dist/index.js)
+npm run dev        # Start in development (tsx)
+npm run build      # Compile TypeScript
+npm start          # Run compiled app (dist/index.js)
+npm run standalone # No Express
 ```
 
 ## **Environment Variables**
