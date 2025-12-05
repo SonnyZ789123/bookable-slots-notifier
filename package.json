@@ -16,7 +16,8 @@
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
     "build": "tsc",
-    "prod": "npm run build && npm run start"
+    "prod": "npm run build && npm run start",
+    "standalone": "tsx src/startBookableSlotNotifier.ts"
   },
   "version": "1.0.0",
   "description": "Bookable Slots Notifier",
