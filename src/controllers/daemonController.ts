@@ -1,12 +1,8 @@
 import { Request, Response } from "express";
 import { isLeft } from "fp-ts/lib/Either.js";
-import { pipe } from "fp-ts/lib/function.js";
+import { INTERVAL_MINS } from "../config/constants.js";
 import { StartDaemonBody } from "../domain/apiDefinitions.js";
-import FieldTargetRange from "../domain/FieldTargetRange.js";
-import { getBookableSlots } from "../services/getBookableSlots.js";
-import { availableFilter, indoorFilter } from "../utils/slotFilter.js";
-
-const INTERVAL_MINS = 5;
+import { startBookableSlotNotifierDaemon } from "../domain/daemon.js";
 
 let daemonInterval: NodeJS.Timeout | null = null;
 
@@ -27,25 +23,22 @@ export const startDaemon = async (req: Request, res: Response) => {
 
   const { month, date, hours } = decoded.right;
 
-  const fieldTargetRange = new FieldTargetRange(month, date, hours);
-
   const intervalMs = INTERVAL_MINS * 60 * 1000;
+
+  const { fieldTargetRange, interval } = startBookableSlotNotifierDaemon({
+    month,
+    date,
+    hours,
+    intervalMs,
+  });
+
+  daemonInterval = interval;
 
   console.log(`
 Starting Bookable Field Daemon: checking for available slots on 
 ${fieldTargetRange.toString()}
 every ${INTERVAL_MINS} minutes...
     `);
-
-  const startDate = fieldTargetRange.getDate();
-
-  daemonInterval = setInterval(() => {
-    getBookableSlots({ startDate })
-      .then((slots) =>
-        pipe(slots, availableFilter, indoorFilter, fieldTargetRange.filterSlots)
-      )
-      .then(fieldTargetRange.handleBookableSlots);
-  }, intervalMs);
 
   res.json({
     message: "Daemon started",
