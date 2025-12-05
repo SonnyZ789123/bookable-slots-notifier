@@ -1,3 +1,4 @@
+import "dotenv/config";
 import { INTERVAL_MINS } from "./config/constants.js";
 import { startBookableSlotNotifierDaemon } from "./domain/daemon.js";
 
