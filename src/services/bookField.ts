@@ -1,5 +1,5 @@
 import axios from "axios";
-import { URLS } from "../constants";
+import { URLS } from "../config/constants";
 import {
   idMap,
   IndoorField,
@@ -10,6 +10,7 @@ import {
 type BookFieldPayloadParams = (IndoorField | OutdoorField) & {
   memberId: number;
 };
+
 const bookFieldPayload = ({
   _tag,
   fieldNumber,

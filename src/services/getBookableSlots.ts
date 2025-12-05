@@ -1,6 +1,6 @@
 import axios from "axios";
 import { isLeft } from "fp-ts/lib/Either";
-import { URLS } from "../constants";
+import { URLS } from "../config/constants";
 import {
   GetBookableSlotsFilterQueryParams,
   GetBookableSlotsResponse,

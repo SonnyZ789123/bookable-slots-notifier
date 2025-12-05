@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const noitifyWhatsAppRecipients = async ({
+export const notifyWhatsAppRecipients = async ({
   fieldDate,
   fields,
 }: {

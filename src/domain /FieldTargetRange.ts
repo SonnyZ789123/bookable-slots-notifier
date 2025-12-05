@@ -1,7 +1,7 @@
 import { pipe } from "fp-ts/lib/function";
-import { Slots } from "./services/getBookableSlots";
-import { noitifyWhatsAppRecipients } from "./services/whatsappNotifier";
-import { idMap } from "./types";
+import { Slots } from "../services/getBookableSlots";
+import { notifyWhatsAppRecipients } from "../services/whatsappNotifier";
+import { idMap } from "../types";
 
 /*
 A slot looks something like this:
@@ -45,7 +45,7 @@ export default class FieldTargetRange {
       const fieldDateString = this.getFieldDateString();
       const fieldsString = this.fieldsToString(slots);
 
-      noitifyWhatsAppRecipients({
+      notifyWhatsAppRecipients({
         fieldDate: fieldDateString,
         fields: fieldsString,
       });

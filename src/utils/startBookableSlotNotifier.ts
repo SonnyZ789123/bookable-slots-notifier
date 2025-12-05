@@ -1,11 +1,11 @@
 import { pipe } from "fp-ts/lib/function";
-import FieldTargetRange from "./FieldTargetRange";
-import { getBookableSlots, Slots } from "./services/getBookableSlots";
-import { idMap } from "./types";
+import FieldTargetRange from "../domain /FieldTargetRange";
+import { getBookableSlots } from "../services/getBookableSlots";
+import { availableFilter, indoorFilter } from "./slotFilter";
 
 type DatesToCheck = { month: number; date: number; hours: number[] };
 
-const datesToCheck: DatesToCheck = {
+const FIELD_TARGET_RANGE: DatesToCheck = {
   // Example: Deember 4th, 20-23 has month = 11, date = 4, hours = [20, 21, 22]
   // month is 0-indexed!!!! so Deember is 11, and January is 0
   month: 11,
@@ -14,30 +14,22 @@ const datesToCheck: DatesToCheck = {
 };
 
 const fieldTargetRange = new FieldTargetRange(
-  datesToCheck.month,
-  datesToCheck.date,
-  datesToCheck.hours
+  FIELD_TARGET_RANGE.month,
+  FIELD_TARGET_RANGE.date,
+  FIELD_TARGET_RANGE.hours
 );
-
-const indoorFilter = (slots: Slots) =>
-  slots.filter(
-    (slot) => slot.linkedProductId === idMap.indoor.bookableLinkedProductId
-  );
-
-const availableFilter = (slots: Slots) =>
-  slots.filter((slot) => slot.isAvailable);
 
 export default function main() {
   const intervalMins = 1;
   const intervalMs = intervalMins * 60 * 1000; // 5 minutes in milliseconds
 
   console.log(`
-    Starting Bookable Field Deamon: checking for available slots on 
+    Starting Bookable Field Daemon: checking for available slots on 
     ${fieldTargetRange.toString()}
     every ${intervalMins} minutes...
   `);
 
-  const requestDeamon = () => {
+  const requestDaemon = () => {
     const startDate = fieldTargetRange.getDate();
 
     setInterval(() => {
@@ -54,5 +46,5 @@ export default function main() {
     }, intervalMs);
   };
 
-  requestDeamon();
+  requestDaemon();
 }
