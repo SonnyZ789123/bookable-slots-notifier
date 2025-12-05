@@ -1,0 +1,33 @@
+{
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@types/axios": "^0.14.4",
+    "@types/express": "^5.0.6",
+    "@types/node": "^24.10.1",
+    "eslint": "^9.39.1",
+    "globals": "^16.5.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.4.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.48.1"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc"
+  },
+  "version": "1.0.0",
+  "description": "Bookable Slots Notifier",
+  "name": "bookable-slots-notifier",
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "fp-ts": "^2.16.9",
+    "io-ts": "^2.2.21",
+    "jquery": "^3.7.1",
+    "node-schedule": "^2.1.1"
+  }
+}
