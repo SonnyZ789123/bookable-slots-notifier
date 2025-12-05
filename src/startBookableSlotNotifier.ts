@@ -14,14 +14,22 @@ const FIELD_TARGET_RANGE: DatesToCheck = {
 };
 
 function main() {
-  const [, , ...hoursArg] = process.argv;
+  const [, , date, ...hoursArg] = process.argv;
 
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
+  if (date != null && date !== "tomorrow" && date !== "today") {
+    console.error(
+      `If providing a date argument, it must be either "today" or "tomorrow".`
+    );
+    process.exit(1);
+  }
 
   if (hoursArg.length > 0) {
-    FIELD_TARGET_RANGE.month = tomorrow.getMonth();
-    FIELD_TARGET_RANGE.date = tomorrow.getDate();
+    const today = new Date();
+    const tomorrow = new Date();
+    tomorrow.setDate(today.getDate() + 1);
+
+    FIELD_TARGET_RANGE.month = (date === "today" ? today : tomorrow).getMonth();
+    FIELD_TARGET_RANGE.date = (date === "today" ? today : tomorrow).getDate();
     FIELD_TARGET_RANGE.hours = hoursArg
       .map((h) => parseInt(h, 10))
       .filter((h) => !isNaN(h));
