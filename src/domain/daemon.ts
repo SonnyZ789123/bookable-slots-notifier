@@ -23,7 +23,10 @@ export const startBookableSlotNotifierDaemon = ({
       .then((slots) =>
         pipe(slots, availableFilter, indoorFilter, fieldTargetRange.filterSlots)
       )
-      .then(fieldTargetRange.handleBookableSlots);
+      .then(fieldTargetRange.handleBookableSlots)
+      .catch((err) => {
+        console.error("Error fetching or handling bookable slots:", err);
+      });
   }, intervalMs);
 
   return { fieldTargetRange, interval };
