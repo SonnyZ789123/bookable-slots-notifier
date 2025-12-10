@@ -1,6 +1,10 @@
 import { pipe } from "fp-ts/lib/function.js";
 import { getBookableSlots } from "../services/getBookableSlots.js";
-import { availableFilter, indoorFilter } from "../utils/slotFilter.js";
+import {
+  availableFilter,
+  indoorFilter,
+  notNullFilter,
+} from "../utils/slotFilter.js";
 import FieldTargetRange from "./FieldTargetRange.js";
 
 export const startBookableSlotNotifierDaemon = ({
@@ -21,7 +25,13 @@ export const startBookableSlotNotifierDaemon = ({
   const interval = setInterval(() => {
     getBookableSlots({ startDate })
       .then((slots) =>
-        pipe(slots, availableFilter, indoorFilter, fieldTargetRange.filterSlots)
+        pipe(
+          slots,
+          notNullFilter,
+          availableFilter,
+          indoorFilter,
+          fieldTargetRange.filterSlots
+        )
       )
       .then(fieldTargetRange.handleBookableSlots)
       .catch((err) => {

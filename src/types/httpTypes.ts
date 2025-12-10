@@ -101,9 +101,9 @@ const BookableSlot = t.type({
   bookableProductId: t.number,
   endDate: t.string,
   isAvailable: t.boolean,
-  linkedProduct: t.unknown,
-  linkedProductId: t.number,
-  product: t.unknown,
+  linkedProduct: t.union([t.unknown, t.null]),
+  linkedProductId: t.union([t.number, t.null]),
+  product: t.union([t.unknown, t.null]),
   startDate: t.string,
 });
 
